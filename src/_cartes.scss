@@ -65,3 +65,23 @@ $identifiantHeight: $identifiantFontSize * 2;
         }
     }
 }
+
+// Exo 7
+.main-cartes {
+    $nbCartes: 6;
+    $angleByCard: 15deg;
+    $initialAngle: math.div($nbCartes, 2) * $angleByCard * -1;
+
+    @for $i from 1 through $nbCartes {
+        .carte-#{$i} {
+            position: absolute;
+            left: $i * math.div($carteWidth, 3);
+            @if $i < math.div($nbCartes, 2) {
+                top: math.div($carteHeight, 10) * ($nbCartes - $i);
+            } @else {
+                top: math.div($carteHeight, 10) * $i;
+            }
+            rotate: $initialAngle + ($i  * $angleByCard);
+        }
+    }
+}
