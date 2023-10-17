@@ -3,7 +3,7 @@
 @import 'variables';
 
 $carteWidth: 80px;
-$carteHeight: 125px;
+$carteHeight: $carteWidth * 1.5;
 $centerColorSize: math.div($carteWidth, 3);
 $insideSpace: 5px;
 $borderColor: black;
