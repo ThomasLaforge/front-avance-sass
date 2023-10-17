@@ -1,0 +1,33 @@
+@use 'mixins';
+@import 'cartes';
+
+$mainColor: #279527;
+$tapisColor: lighten($mainColor, 20%);
+
+$tapisWidth: 800px;
+$tapisHeight: 600px;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  @include mixins.flex(column, center);
+  align-items: center;
+  
+  background-color: $mainColor;
+
+  .tapis {
+    background-color: $tapisColor;
+    width: $tapisWidth;
+    height: $tapisHeight;
+  }
+
+}

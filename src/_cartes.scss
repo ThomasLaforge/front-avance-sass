@@ -1,0 +1,51 @@
+@use 'mixins';
+
+$carteWidth: 100px;
+$carteHeight: 150px;
+$centerColorSize: 35px;
+$insideSpace: 5px;
+$borderColor: black;
+
+.carte {
+    @include mixins.flex(column, center);
+    align-items: center;
+    width: $carteWidth;
+    height: $carteHeight;
+    background: white;
+    @include mixins.border(1px, solid, $borderColor, 8px);    
+
+    .carte-inside {
+        @include mixins.flex(column, space-between);
+        height: $carteHeight - $insideSpace * 2;
+        width: $carteWidth - $insideSpace * 2;
+        padding: $insideSpace;
+        @include mixins.border(1px, solid, $borderColor, 8px);    
+
+        .carte-identifiant {
+            @include mixins.flex(column, space-between);
+            align-items: center;
+            text-align: center;
+            font-size: 12px;
+        }
+    
+        .carte-top {
+            @include mixins.flex(row, flex-start);
+        }
+        
+        .carte-middle {
+            text-align: center;
+    
+            .carte-color {
+                font-size: $centerColorSize;
+            }
+        }
+    
+        .carte-bottom {
+            @include mixins.flex(row, flex-end);
+    
+            .carte-identifiant {
+                rotate: 180deg;
+            }
+        }
+    }
+}
