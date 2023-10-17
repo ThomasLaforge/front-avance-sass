@@ -1,10 +1,13 @@
 @use 'mixins';
+@use 'sass:math';
 
-$carteWidth: 100px;
-$carteHeight: 150px;
-$centerColorSize: 35px;
+$carteWidth: 80px;
+$carteHeight: 125px;
+$centerColorSize: math.div($carteWidth, 3);
 $insideSpace: 5px;
 $borderColor: black;
+$identifiantFontSize: math.div($carteHeight, 10);
+$identifiantHeight: $identifiantFontSize * 2;
 
 .carte {
     @include mixins.flex(column, center);
@@ -25,7 +28,8 @@ $borderColor: black;
             @include mixins.flex(column, space-between);
             align-items: center;
             text-align: center;
-            font-size: 12px;
+            font-size: $identifiantFontSize;
+            height: $identifiantHeight;
         }
     
         .carte-top {
@@ -46,6 +50,18 @@ $borderColor: black;
             .carte-identifiant {
                 rotate: 180deg;
             }
+        }
+    }
+}
+
+// Exo 6
+.pile-cartes {
+    $nbCartes: 5;
+
+    @for $i from 1 through $nbCartes {
+        .carte-#{$i} {
+            position: absolute;
+            top: ($i - 1) * ($identifiantHeight + $insideSpace * 3);
         }
     }
 }
