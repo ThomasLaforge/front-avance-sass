@@ -1,5 +1,6 @@
 @use 'mixins';
 @use 'sass:math';
+@import 'variables';
 
 $carteWidth: 80px;
 $carteHeight: 125px;
@@ -82,6 +83,20 @@ $identifiantHeight: $identifiantFontSize * 2;
                 top: math.div($carteHeight, 10) * $i;
             }
             rotate: $initialAngle + ($i  * $angleByCard);
+        }
+    }
+}
+
+// Exo 8
+.defausse-cartes {
+    $nbCartes: 3;
+    
+    @for $i from 1 through $nbCartes {
+        .carte-#{$i} {
+            position: absolute;
+            top: math.random(math.div($tapisHeight, 1px)) * 1px;
+            left: math.random(math.div($tapisWidth, 1px)) * 1px;
+            rotate: math.random(360) * 1deg;
         }
     }
 }
